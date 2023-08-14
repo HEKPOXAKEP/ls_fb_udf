@@ -45,9 +45,9 @@ type
   end;
 
 (******************************************************************
-Вернет содержимое BLOB в виде CString(32700)
+Р’РµСЂРЅРµС‚ СЃРѕРґРµСЂР¶РёРјРѕРµ BLOB РІ РІРёРґРµ CString(32700)
 
-NOTE: проверка на размер BLOB отсутствует
+NOTE: РїСЂРѕРІРµСЂРєР° РЅР° СЂР°Р·РјРµСЂ BLOB РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚
 ----------------------------
 declare external function udfBlobAsPChar
   blob
@@ -59,7 +59,7 @@ module_name 'ad_UDF';
 function BlobAsPChar(Blob:pBlob):pChar; cdecl; export;
 
 (******************************************************************
-Запихивает строку S в BLOB
+Р—Р°РїРёС…РёРІР°РµС‚ СЃС‚СЂРѕРєСѓ S РІ BLOB
 ----------------------------
 declare external function udfStrToBlob
  CString(32700),
@@ -72,7 +72,7 @@ module_name 'ad_UDF';
 function StrToBlob(s:pChar; Blob:pBlob):pBlob; cdecl; export;
 
 (******************************************************************
-Вернет длину BLOB`а
+Р’РµСЂРЅРµС‚ РґР»РёРЅСѓ BLOB`Р°
 ----------------------------
 declare external function udfBlobLen
  blob
