@@ -12,4 +12,4 @@
 
 *.dpr  working-tree-encoding=CP1251    eol=CRLF
 *.pas  working-tree-encoding=CP1251    eol=CRLF
-Readme working-tree-encoding=CP1251    eol=CRLF
+Readme.md working-tree-encoding=CP1251    eol=CRLF

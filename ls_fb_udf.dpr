@@ -1,7 +1,7 @@
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//
 //                                              //
 //         UDF для InterBase (FireBird)         //
-//            Version 0.01.03/g0811             //
+//            Version 0.01.03/g0822             //
 //  Copyright 2001-2023 Lagodrom Solutions Ltd  //
 //            All rights reserved               //
 //                                              //
@@ -15,12 +15,10 @@ uses
   Windows,
   SysUtils,
   ib_util,
-  //StrUtils,
-  //DateUtil,
   LS_BlobFunc;
 
 const
-  sLibVer='0.01.03/g0811(2023)';
+  sLibVer='0.01.03/g0822(2023)';
 
 const
   Crc32Table:array[0..255] of cardinal=(
@@ -380,7 +378,7 @@ begin
 end;
 
 (******************************************************************
-Инициализация модуля ad_UDF
+Инициализация модуля ls_fb_udf
 Вернет: 1=OK, 0=FAIL
 ----------------------------
 declare external function udfInitUDFs
@@ -396,7 +394,7 @@ begin
 end;
 
 (******************************************************************
-Вернет версию ad_UDF
+Вернет версию библиотеки ls_fb_udf
 ----------------------------
 declare external function udfLibVer
 returns
@@ -406,7 +404,7 @@ module_name 'ls_fb_udf';
 ******************************************************************)
 function GetLibVer:pChar; cdecl; export;
 begin
-  Result:=ib_util_malloc(33);
+  Result:=ib_util_malloc(Length(sLibVer)+1);
   StrPCopy(Result,sLibVer);
 end;
 
@@ -2431,7 +2429,8 @@ end;
 
 exports
   { --- инициализация --- }
-  InitUDFs,
+  InitUDFs,      // Инициализация ls_fb_udf
+  GetLibVer,     // Вернет версию библиотеки UDF
 
   { --- булевы функции и работа с битами --- }
   GetAnd,        // Логическое И
@@ -2512,7 +2511,6 @@ exports
   IncStruct,     // Уверичивает элемент структуры
   GetCommonParent,  // Вернет общего родителя для двух структур
   { --- специфические функции --- }
-  GetLibVer,     // Вернет версию ad_UDF
   ObjHasAttrs,
   IncAttrId,
   EncryptPwd,    // Возвращает зашифрованный пароль в виде строкового представления HEX(crc32)
